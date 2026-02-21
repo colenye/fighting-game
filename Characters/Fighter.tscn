@@ -4,8 +4,20 @@
 [ext_resource type="Script" uid="uid://gva66tljfmyv" path="res://Characters/character_body_2d.gd" id="1_rup34"]
 [ext_resource type="Script" uid="uid://crfj8qumy8oad" path="res://Characters/hurt_box.gd" id="3_vxljf"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_rup34"]
-size = Vector2(120, 118)
+[sub_resource type="Animation" id="Animation_ujxot"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D/Body Parts/Left Arm:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(55, -4.000001)]
+}
 
 [sub_resource type="Animation" id="Animation_d6c11"]
 resource_name = "punch"
@@ -13,7 +25,7 @@ length = 0.17
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Body Parts/Right Arm:position")
+tracks/0/path = NodePath("Sprite2D/Body Parts/Right Arm:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -25,7 +37,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Body Parts/Right Arm/Area2D/CollisionShape2D:disabled")
+tracks/1/path = NodePath("Sprite2D/Body Parts/Right Arm/Area2D/CollisionShape2D:disabled")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -38,11 +50,32 @@ tracks/1/keys = {
 [sub_resource type="Animation" id="Animation_vxljf"]
 resource_name = "idle"
 
+[sub_resource type="Animation" id="Animation_1slup"]
+resource_name = "jab"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D/Body Parts/Left Arm:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.06676667, 0.1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(55, -4.000001), Vector2(86, -7), Vector2(55, -4.000001)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_1slup"]
 _data = {
-&"p1_cross": SubResource("Animation_d6c11"),
-&"p1_idle": SubResource("Animation_vxljf")
+&"RESET": SubResource("Animation_ujxot"),
+&"cross": SubResource("Animation_d6c11"),
+&"idle": SubResource("Animation_vxljf"),
+&"jab": SubResource("Animation_1slup")
 }
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_d6c11"]
+size = Vector2(126.75729, 119.466675)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ujxot"]
 size = Vector2(127.14093, 121.90477)
@@ -50,49 +83,60 @@ size = Vector2(127.14093, 121.90477)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vxljf"]
 size = Vector2(16, 113)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rup34"]
+size = Vector2(120, 118)
+
 [node name="Fighter" type="CharacterBody2D" unique_id=174316188 node_paths=PackedStringArray("hurtbox", "anim")]
 script = ExtResource("1_rup34")
-hurtbox = NodePath("Body Parts/HurtBox")
-anim = NodePath("AnimationPlayer")
+hurtbox = NodePath("Sprite2D/Body Parts/HurtBox")
+anim = NodePath("Sprite2D/AnimationPlayer")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1073471784]
 texture = ExtResource("1_4glqu")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=96313075]
-shape = SubResource("RectangleShape2D_rup34")
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=650740913]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite2D" unique_id=650740913]
+root_node = NodePath("../..")
 libraries/ = SubResource("AnimationLibrary_1slup")
 
-[node name="Body Parts" type="Node2D" parent="." unique_id=1402093745]
+[node name="Body Parts" type="Node2D" parent="Sprite2D" unique_id=1402093745]
 
-[node name="Left Arm" type="Sprite2D" parent="Body Parts" unique_id=2035439365]
+[node name="Left Arm" type="Sprite2D" parent="Sprite2D/Body Parts" unique_id=2035439365]
 position = Vector2(55, -4.000001)
 scale = Vector2(0.40234375, 0.17578125)
 texture = ExtResource("1_4glqu")
 
-[node name="Right Arm" type="Sprite2D" parent="Body Parts" unique_id=1085850295]
+[node name="Area2D" type="Area2D" parent="Sprite2D/Body Parts/Left Arm" unique_id=778983176]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/Body Parts/Left Arm/Area2D" unique_id=1107010878]
+position = Vector2(-1.2427216, -2.8444386)
+shape = SubResource("RectangleShape2D_d6c11")
+
+[node name="Right Arm" type="Sprite2D" parent="Sprite2D/Body Parts" unique_id=1085850295]
 position = Vector2(22.999992, 11.000002)
 scale = Vector2(0.58203125, 0.1640625)
 texture = ExtResource("1_4glqu")
 
-[node name="Area2D" type="Area2D" parent="Body Parts/Right Arm" unique_id=719367922]
+[node name="Area2D" type="Area2D" parent="Sprite2D/Body Parts/Right Arm" unique_id=719367922]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Body Parts/Right Arm/Area2D" unique_id=804596399]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/Body Parts/Right Arm/Area2D" unique_id=804596399]
 position = Vector2(1.3828278e-05, -1.3442266e-05)
 scale = Vector2(1.0000001, 1)
 shape = SubResource("RectangleShape2D_ujxot")
 
-[node name="HurtBox" type="Area2D" parent="Body Parts" unique_id=1270599761 node_paths=PackedStringArray("fighter")]
+[node name="HurtBox" type="Area2D" parent="Sprite2D/Body Parts" unique_id=1270599761 node_paths=PackedStringArray("fighter")]
 script = ExtResource("3_vxljf")
-fighter = NodePath("../..")
+fighter = NodePath("../../..")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Body Parts/HurtBox" unique_id=692075952]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/Body Parts/HurtBox" unique_id=692075952]
 position = Vector2(-55, 2.5)
 shape = SubResource("RectangleShape2D_vxljf")
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="Body Parts/HurtBox" unique_id=1615576530]
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Sprite2D/Body Parts/HurtBox" unique_id=1615576530]
 position = Vector2(55, 2)
 shape = SubResource("RectangleShape2D_vxljf")
 
-[connection signal="area_entered" from="Body Parts/Right Arm/Area2D" to="." method="_on_area_2d_area_entered"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=96313075]
+shape = SubResource("RectangleShape2D_rup34")
+
+[connection signal="area_entered" from="Sprite2D/Body Parts/Left Arm/Area2D" to="." method="_on_area_2d_area_entered_jab"]
+[connection signal="area_entered" from="Sprite2D/Body Parts/Right Arm/Area2D" to="." method="_on_area_2d_area_entered_cross"]
