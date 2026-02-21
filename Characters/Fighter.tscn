@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://bicmhv17agydp"]
+
+[ext_resource type="Texture2D" uid="uid://ciro7bxh00eu1" path="res://icon.svg" id="1_4glqu"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rup34"]
+size = Vector2(127, 124)
+
+[node name="Fighter" type="Node2D" unique_id=1898545285]
+
+[node name="Label" type="Label" parent="." unique_id=1071627731]
+offset_right = 40.0
+offset_bottom = 23.0
+text = "fefef"
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="." unique_id=174316188]
+
+[node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D" unique_id=1073471784]
+position = Vector2(155, 144)
+texture = ExtResource("1_4glqu")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D" unique_id=96313075]
+position = Vector2(155.5, 145)
+shape = SubResource("RectangleShape2D_rup34")
