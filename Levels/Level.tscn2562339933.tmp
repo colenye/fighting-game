@@ -2,13 +2,9 @@
 
 [ext_resource type="Script" uid="uid://c2d8vkkk26kxg" path="res://Levels/level.gd" id="1_q1cbv"]
 [ext_resource type="PackedScene" uid="uid://cykcdlsbpnce6" path="res://Environment/Floor.tscn" id="2_24c1m"]
-[ext_resource type="PackedScene" uid="uid://htcg10dg0sji" path="res://UI/ui.tscn" id="3_24c1m"]
 
 [node name="Level" type="Node2D" unique_id=1498610806]
 script = ExtResource("1_q1cbv")
 
 [node name="Floor" parent="." unique_id=1027630566 instance=ExtResource("2_24c1m")]
 position = Vector2(517, 628)
-
-[node name="UI" parent="." unique_id=112071565 instance=ExtResource("3_24c1m")]
-unique_name_in_owner = true

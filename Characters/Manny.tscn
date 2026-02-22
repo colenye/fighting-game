@@ -1,5 +1,66 @@
 [gd_scene format=3 uid="uid://clrne061uwq6s"]
 
 [ext_resource type="PackedScene" uid="uid://bicmhv17agydp" path="res://Characters/Fighter.tscn" id="1_at58n"]
+[ext_resource type="Script" uid="uid://cy5m3b1ua6dk" path="res://Characters/manny.gd" id="2_4kugx"]
 
-[node name="Fighter" unique_id=1898545285 instance=ExtResource("1_at58n")]
+[sub_resource type="Animation" id="Animation_4kugx"]
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D/Body Parts/Left Arm:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.033333335, 0.06666667, 0.10000001, 0.13333334, 0.16666667, 0.2, 0.23333335, 0.26666668, 0.3, 0.33333334, 0.36666667, 0.40000004, 0.43333337, 0.4666667, 0.50000006, 0.53333336, 0.5666667, 0.6000001, 0.6333334, 0.66666675, 0.70000005, 0.7333334, 0.7666667, 0.8000001, 0.8333334, 0.86666673, 0.90000004, 0.9333334, 0.9666667, 1, 1.0333334, 1.0666667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(55, -4.000001), Vector2(55, -4.000001), Vector2(85, -7), Vector2(44, -5.0000005), Vector2(84, -7), Vector2(55, -4.000001), Vector2(85, -7), Vector2(44, -5.0000005), Vector2(84, -7), Vector2(55, -4.000001), Vector2(85, -7), Vector2(44, -5.0000005), Vector2(84, -7), Vector2(55, -4.000001), Vector2(85, -7), Vector2(44, -5.0000005), Vector2(84, -7), Vector2(55, -4.000001), Vector2(85, -7), Vector2(44, -5.0000005), Vector2(84, -7), Vector2(55, -4.000001), Vector2(85, -7), Vector2(44, -5.0000005), Vector2(84, -7), Vector2(55, -4.000001), Vector2(85, -7), Vector2(44, -5.0000005), Vector2(84, -7), Vector2(55, -4.000001), Vector2(85, -7), Vector2(44, -5.0000005), Vector2(84, -7)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D/Body Parts/Right Arm:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.033333335, 0.06666667, 0.10000001, 0.13333334, 0.16666667, 0.2, 0.23333335, 0.26666668, 0.3, 0.33333334, 0.36666667, 0.40000004, 0.43333337, 0.4666667, 0.50000006, 0.53333336, 0.5666667, 0.6000001, 0.6333334, 0.66666675, 0.70000005, 0.7333334, 0.7666667, 0.8000001, 0.8333334, 0.86666673, 0.90000004, 0.9333334, 0.9666667, 1, 1.0333334, 1.0666667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(22.999992, 11.000002), Vector2(88.99999, 3.000001), Vector2(35.999992, 15), Vector2(92.00001, 7), Vector2(34.999992, 12), Vector2(88.99999, 3.000001), Vector2(35.999992, 15), Vector2(92.00001, 7), Vector2(34.999992, 12), Vector2(88.99999, 3.000001), Vector2(35.999992, 15), Vector2(92.00001, 7), Vector2(34.999992, 12), Vector2(88.99999, 3.000001), Vector2(35.999992, 15), Vector2(92.00001, 7), Vector2(34.999992, 12), Vector2(88.99999, 3.000001), Vector2(35.999992, 15), Vector2(92.00001, 7), Vector2(34.999992, 12), Vector2(88.99999, 3.000001), Vector2(35.999992, 15), Vector2(92.00001, 7), Vector2(34.999992, 12), Vector2(88.99999, 3.000001), Vector2(35.999992, 15), Vector2(92.00001, 7), Vector2(34.999992, 12), Vector2(88.99999, 3.000001), Vector2(35.999992, 15), Vector2(92.00001, 7), Vector2(34.999992, 12)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D/Body Parts/Left Arm/Area2D/CollisionShape2D:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.06666667, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, false, true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_78hqm"]
+_data = {
+&"special": SubResource("Animation_4kugx")
+}
+
+[node name="Manny" unique_id=1898545285 instance=ExtResource("1_at58n")]
+script = ExtResource("2_4kugx")
+
+[node name="AnimationPlayer" parent="Sprite2D" parent_id_path=PackedInt32Array(1073471784) index="0" unique_id=650740913]
+libraries/Manny = SubResource("AnimationLibrary_78hqm")
+
+[node name="Left Arm" parent="Sprite2D/Body Parts" parent_id_path=PackedInt32Array(1402093745) index="0" unique_id=2035439365]
+position = Vector2(55, -4.000001)
+
+[node name="Area2D" parent="Sprite2D/Body Parts/Left Arm" index="0" unique_id=778983176]
+metadata/_edit_lock_ = true
+
+[node name="Area2D" parent="Sprite2D/Body Parts/Right Arm" parent_id_path=PackedInt32Array(1085850295) index="0" unique_id=719367922]
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" parent="Sprite2D/Body Parts/Right Arm/Area2D" index="0" unique_id=804596399]
+disabled = false
+metadata/_edit_lock_ = true

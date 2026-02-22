@@ -1,0 +1,36 @@
+[gd_scene format=3 uid="uid://5i055ky8lkpj"]
+
+[ext_resource type="PackedScene" uid="uid://bicmhv17agydp" path="res://Characters/Fighter.tscn" id="1_726pv"]
+[ext_resource type="Script" uid="uid://c4tbnr0xr1imc" path="res://Characters/luffy.gd" id="2_uq145"]
+
+[sub_resource type="Animation" id="Animation_uq145"]
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D/Body Parts/Right Arm:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3147514, 0.42042878),
+"transitions": PackedFloat32Array(5.278033, 5.278033, 5.278033),
+"update": 0,
+"values": [Vector2(22.999992, 11.000002), Vector2(500, 11), Vector2(23, 11)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_owqns"]
+_data = {
+&"special": SubResource("Animation_uq145")
+}
+
+[node name="Luffy" unique_id=174316188 instance=ExtResource("1_726pv")]
+script = ExtResource("2_uq145")
+
+[node name="AnimationPlayer" parent="Sprite2D" parent_id_path=PackedInt32Array(1073471784) index="0" unique_id=650740913]
+libraries/Luffy = SubResource("AnimationLibrary_owqns")
+
+[node name="Left Arm" parent="Sprite2D/Body Parts" parent_id_path=PackedInt32Array(1402093745) index="0" unique_id=2035439365]
+position = Vector2(55, -4.000001)
+
+[node name="CollisionShape2D" parent="Sprite2D/Body Parts/Right Arm/Area2D" parent_id_path=PackedInt32Array(719367922) index="0" unique_id=804596399]
+disabled = false

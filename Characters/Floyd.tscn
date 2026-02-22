@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://babcgfpff3j8w"]
+
+[ext_resource type="PackedScene" uid="uid://bicmhv17agydp" path="res://Characters/Fighter.tscn" id="1_g54i4"]
+[ext_resource type="Script" uid="uid://dfpystp2l1yi2" path="res://Characters/floyd.gd" id="2_u04o4"]
+
+[node name="Floyd" unique_id=174316188 instance=ExtResource("1_g54i4")]
+script = ExtResource("2_u04o4")

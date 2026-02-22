@@ -6,5 +6,5 @@ var playerID : int
 
 func take_damage(dmg: int):
 	if fighter:
-		fighter.health -= dmg
+		fighter.currHealth -= dmg
 		fighter.update_health()

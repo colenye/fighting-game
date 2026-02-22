@@ -1,0 +1,5 @@
+[gd_scene format=3 uid="uid://qcgu2opm8ino"]
+
+[ext_resource type="PackedScene" uid="uid://bicmhv17agydp" path="res://Characters/Fighter.tscn" id="1_2a7bw"]
+
+[node name="KV" unique_id=174316188 instance=ExtResource("1_2a7bw")]
