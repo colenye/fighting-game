@@ -3,12 +3,42 @@
 [ext_resource type="Script" uid="uid://c2d8vkkk26kxg" path="res://Levels/level.gd" id="1_q1cbv"]
 [ext_resource type="PackedScene" uid="uid://cykcdlsbpnce6" path="res://Environment/Floor.tscn" id="2_24c1m"]
 [ext_resource type="PackedScene" uid="uid://htcg10dg0sji" path="res://UI/ui.tscn" id="3_24c1m"]
+[ext_resource type="Script" uid="uid://c7d3xxsdk1xw4" path="res://Levels/connection_manager.gd" id="4_wbw1h"]
+[ext_resource type="Script" uid="uid://ddmhqspy2tsc4" path="res://Levels/multiplayer_spawner.gd" id="5_286st"]
 
 [node name="Level" type="Node2D" unique_id=1498610806]
 script = ExtResource("1_q1cbv")
 
 [node name="Floor" parent="." unique_id=1027630566 instance=ExtResource("2_24c1m")]
-position = Vector2(517, 628)
+position = Vector2(558, 621)
+
+[node name="Floor3" parent="." unique_id=1222591822 instance=ExtResource("2_24c1m")]
+position = Vector2(1078, 309)
+rotation = 1.595638
+
+[node name="Floor4" parent="." unique_id=1111135326 instance=ExtResource("2_24c1m")]
+position = Vector2(12.000122, 324)
+rotation = 1.595638
 
 [node name="UI" parent="." unique_id=112071565 instance=ExtResource("3_24c1m")]
 unique_name_in_owner = true
+
+[node name="Floor2" parent="." unique_id=854254818 instance=ExtResource("2_24c1m")]
+position = Vector2(1034, 1256)
+
+[node name="ConnectionManager" type="Node" parent="." unique_id=999576854]
+script = ExtResource("4_wbw1h")
+
+[node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="." unique_id=1179916119 node_paths=PackedStringArray("UI")]
+_spawnable_scenes = PackedStringArray("uid://5i055ky8lkpj", "uid://babcgfpff3j8w")
+spawn_path = NodePath("../Players")
+spawn_limit = 2
+script = ExtResource("5_286st")
+UI = NodePath("../UI")
+
+[node name="Players" type="Node2D" parent="." unique_id=1064324677]
+
+[connection signal="pressed" from="UI/serverButton" to="ConnectionManager" method="_on_server_button_pressed"]
+[connection signal="pressed" from="UI/clientButton" to="ConnectionManager" method="_on_client_button_pressed"]
+
+[editable path="UI"]

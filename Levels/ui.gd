@@ -12,3 +12,9 @@ func update_p1_stats(health, stamina):
 func update_p2_stats(health, stamina):
 	p2HealthBar.value = health
 	p2StaminaBar.value = stamina
+
+func death(player: int):
+	if player == 1:
+		print("p1 lost")
+	if player == 2:
+		print("p2 lost")

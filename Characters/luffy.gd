@@ -12,7 +12,7 @@ static func init(position: Vector2, player_id: int, input_prefix: String):
 	f.JABDMG = 5
 	f.CROSSDMG = 10
 	f.MAXHEALTH = 100
-	f.MAXSTAMINA = 100
+	f.MAXSTAMINA = 1000
 	f.DASH = 1500
 	return f
 

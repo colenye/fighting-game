@@ -6,6 +6,9 @@ extends CharacterBody2D
 # Emit these signals whenever health and stamina change so that the UI in Level can update
 signal signal_stats(health: int, stamina: float)
 
+# Emit whenever player dies
+signal signal_death(player: int)
+
 # These values will be set by children that inherit Fighter (the values in caps)
 var SPEED : int
 var JUMP_VELOCITY : int
@@ -130,10 +133,10 @@ func movement(delta: float):
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 
-# Eventually add currHealth bars and it'll update the currHealth bar
 func update_health() -> void:
-	if currHealth < 90:
-		pass
+	if currHealth <= 0:
+		signal_death.emit(player)
+		apply_scale(Vector2(0.1,0.1))
 
 func _on_area_2d_area_entered_jab(area: Area2D) -> void:
 	if area is HurtBox and area.playerID != player:

@@ -39,3 +39,20 @@ offset_left = 826.0
 offset_top = 65.0
 offset_right = 1054.0
 offset_bottom = 92.0
+
+[node name="serverButton" type="Button" parent="." unique_id=1160669222]
+layout_mode = 0
+offset_left = 83.0
+offset_top = 210.0
+offset_right = 195.0
+offset_bottom = 409.0
+text = "server"
+
+[node name="clientButton" type="Button" parent="." unique_id=1251957970]
+layout_mode = 0
+offset_left = 318.0
+offset_top = 203.0
+offset_right = 430.0
+offset_bottom = 402.0
+text = "client
+"
