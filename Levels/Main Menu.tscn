@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://dsv7uok0b5wdq"]
+
+[node name="MainMenu" type="Node2D" unique_id=716284910]
+
+[node name="Control" type="Control" parent="." unique_id=886217286]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1151.0
+offset_bottom = 646.0
+
+[node name="TextEdit" type="TextEdit" parent="Control" unique_id=583004811]
+layout_mode = 0
+offset_left = 271.0
+offset_top = 8.0
+offset_right = 763.0
+offset_bottom = 125.0
+text = "Main"
+
+[node name="Button" type="Button" parent="Control" unique_id=1500154018]
+layout_mode = 0
+offset_left = 163.0
+offset_top = 404.0
+offset_right = 370.0
+offset_bottom = 496.0
+text = "START"
